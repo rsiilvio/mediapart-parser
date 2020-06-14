@@ -8,18 +8,11 @@ setup(
     author='Robin Perice',
     author_email='robin.perice@protonmail.com',
     url='https://github.com/r0perice/mediapart-bot-core',
-
+    download_url='https://github.com/r0perice/mediapart-bot-core/archive/1.0.0-beta.1.tar.gz',
     install_requires=[
           'feedparser',
           'beautifulsoup4',
           'requests',
       ],
 
-    classifiers=[
-    'Development Status :: 1.0.0-beta.1',
-    'Intended Audience :: Developers',
-    'Topic :: Software Development :: Website Parser',
-    'License :: OSI Approved :: MIT License',
-    'Programming Language :: Python :: 3',
-  ],
-    )
+)
