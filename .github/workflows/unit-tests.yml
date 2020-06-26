@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip3 install PyPDF2
+        pip3 install PyPDF2 setuptools
 
     - name: Run Tests
       env:
