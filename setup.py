@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 setup(
     name='mediapart_parser',
     packages=['mediapart_parser'],
