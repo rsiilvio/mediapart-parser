@@ -2,11 +2,7 @@ name: Unit tests
 
 on:
   push:
-    branches: [ master ]
-    paths:
-      - "**.py"
-  pull_request:
-    branches: [ master ]
+    branches: [ develop ]
     paths:
       - "**.py"
   
