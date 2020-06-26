@@ -1,5 +1,6 @@
 # Mediapart Parser
-  
+
+[![PyPI version](https://badge.fury.io/py/mediapart-parser.svg)](https://badge.fury.io/py/mediapart-parser)
 [![Unit tests](https://github.com/r0perice/mediapart-parser/workflows/Unit%20tests/badge.svg)](https://github.com/r0perice/mediapart-parser/actions?query=workflow%3A%22Unit+tests%22)
  
 # Quick Start
