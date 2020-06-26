@@ -15,9 +15,12 @@ jobs:
       
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install shutil PyPDF2
+        python3 -m pip install --upgrade pip
+        pip3 install PyPDF2
 
     - name: Run Tests
+      env:
+        MEDIAPART_USER_NAME: ${{ secrets.MEDIAPART_USER_NAME }}
+        MEDIAPART_USER_PASSWORD: ${{ secrets.MEDIAPART_USER_PASSWORD }}
       run: |
-        python -m unittest
+        python3 -m unittest
