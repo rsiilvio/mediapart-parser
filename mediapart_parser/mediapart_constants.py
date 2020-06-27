@@ -1,6 +1,7 @@
 class Global:
     PDF_ARTICLE_BASE_URL = "https://www.mediapart.fr/tools/pdf/"
     RSS_FEED_LINK_FRENCH = "https://www.mediapart.fr/articles/feed"
+    MAIN_PAGE_LINK_ENGLISH = "https://www.mediapart.fr/en/english"
     FULL_ARTICLE_SUFFIX_FRENCH = "?onglet=full"
 
 
