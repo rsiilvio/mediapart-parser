@@ -5,11 +5,8 @@ import tempfile
 import shutil
 import PyPDF2
 
-# mediapart_user_name = os.environ['MEDIAPART_USER_NAME']
-# mediapart_user_password = os.environ['MEDIAPART_USER_PASSWORD']
-mediapart_user_name = "robin.perice@protonmail.com"
-mediapart_user_password = "!#7K6VaAhvtWRTueyZ*AR2hMmtfCq$qA"
-
+mediapart_user_name = os.environ['MEDIAPART_USER_NAME']
+mediapart_user_password = os.environ['MEDIAPART_USER_PASSWORD']
 
 class MediapartParserTest(unittest.TestCase):
 
