@@ -8,6 +8,7 @@ import PyPDF2
 mediapart_user_name = os.environ['MEDIAPART_USER_NAME']
 mediapart_user_password = os.environ['MEDIAPART_USER_PASSWORD']
 
+
 class MediapartParserTest(unittest.TestCase):
 
     def test_instanciation(self):
@@ -45,7 +46,7 @@ class MediapartParserTest(unittest.TestCase):
         try:
             PyPDF2.PdfFileReader(open(article_path, "rb"))
         except PyPDF2.utils.PdfReadError as e:
-            self.fail("test_download_article failed."  + str(e))
+            self.fail("test_download_article failed." + str(e))
 
     def test_get_last_english_articles_titles(self):
         parser = MediapartParser(mediapart_user_name, mediapart_user_password)
