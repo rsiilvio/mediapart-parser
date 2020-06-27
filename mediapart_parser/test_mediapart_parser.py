@@ -44,8 +44,8 @@ class MediapartParserTest(unittest.TestCase):
         self.assertTrue(os.path.exists(article_path))
         try:
             PyPDF2.PdfFileReader(open(article_path, "rb"))
-        except PyPDF2.utils.PdfReadError:
-            self.fail("test_download_article failed.")
+        except PyPDF2.utils.PdfReadError as e:
+            self.fail("test_download_article failed."  + str(e))
 
     def test_get_last_english_articles_titles(self):
         parser = MediapartParser(mediapart_user_name, mediapart_user_password)
