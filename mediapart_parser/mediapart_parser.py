@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from requests import Session
 from deprecated import deprecated
 
+
 class MediapartParser:
 
     mediapart_user = ""
@@ -42,7 +43,8 @@ class MediapartParser:
         while not os.path.exists(final_file_path):
             time.sleep(1)
 
-    @deprecated(version='1.1.0', reason="This will call get_last_french_articles_links().")
+    @deprecated(version='1.1.0',
+                reason="This will call get_last_french_articles_links().")
     def get_last_articles_links(self):
         self.get_last_french_articles_links
 
@@ -62,7 +64,7 @@ class MediapartParser:
         links available from the website main page."""
 
         page = requests.get(Global.MAIN_PAGE_LINK_ENGLISH,
-            auth=(self.mediapart_user, self.mediapart_pwd))
+                            auth=(self.mediapart_user, self.mediapart_pwd))
         soup = BeautifulSoup(page.text, "html.parser")
         articles_raw = soup.find_all("div", {"data-type": "article"})
 
@@ -71,7 +73,7 @@ class MediapartParser:
         for article_raw in articles_raw:
             # max return titles is 10 to copy the behavior of other methods
             # that use the rss feed
-            if (max_array_size<10):
+            if (max_array_size < 10):
                 title_raw = article_raw.find("h3", {"class": "title"})
                 titles.append(title_raw.text.strip())
                 max_array_size = max_array_size + 1
@@ -110,7 +112,9 @@ class MediapartParser:
             article_url,
             auth=(self.mediapart_user, self.mediapart_pwd))
         soup = BeautifulSoup(page.text, "html.parser")
-        result = soup.find("div", {"class": "sub-header accur8-desktop accur8-tablet accurWidth-desktop accurWidth-tablet"})
+        result = soup.find("div", {"class": "sub-header "
+                                   "accur8-desktop accur8-tablet "
+                                   "accurWidth-desktop accurWidth-tablet"})
         return result["data-nid"]
 
     def download_article(self, article_id, file_path):
@@ -120,7 +124,7 @@ class MediapartParser:
             (can be retrieved using get_article_id)
             file_path -- the path on the disk where
             you want the article to be written
-        
+
         Returns:
             None
         """
