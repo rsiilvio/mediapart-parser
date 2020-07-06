@@ -46,7 +46,7 @@ class MediapartParser:
     @deprecated(version='1.1.0',
                 reason="This will call get_last_french_articles_links().")
     def get_last_articles_links(self):
-        self.get_last_french_articles_links
+        self.get_last_french_articles_links()
 
     def get_last_french_articles_links(self):
         """Returns a list containing all articles
