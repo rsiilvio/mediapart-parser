@@ -73,7 +73,7 @@ class MediapartParser:
         for article_raw in articles_raw:
             # max return titles is 10 to copy the behavior of other methods
             # that use the rss feed
-            if (max_array_size < 10):
+            if max_array_size < 10:
                 title_raw = article_raw.find("h3", {"class": "title"})
                 titles.append(title_raw.text.strip())
                 max_array_size = max_array_size + 1
@@ -135,5 +135,5 @@ class MediapartParser:
         # load the page
         page = self.__load_article_page(url)
 
-        # finaly write page content in a file
+        # finally write page content in a file
         self.__write_page_content_in_file(file_path, page)

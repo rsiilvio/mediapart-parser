@@ -1,0 +1,6 @@
+setuptools~=40.8.0
+feedparser~=5.2.1
+requests~=2.24.0
+beautifulsoup4~=4.9.1
+Deprecated~=1.2.10
+PyPDF2~=1.26.0
