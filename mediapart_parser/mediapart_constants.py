@@ -7,6 +7,6 @@ class Global:
 
 class Login:
     LOGIN_PAGE_FRENCH = "https://www.mediapart.fr/login_check"
-    OP_STRING_FRENCH = "Se+connecter"
+    OP_STRING_FRENCH = "Se connecter"
     CONNECTION_USER_NAME = "name"
     CONNECTION_USER_PASSWORD = "password"

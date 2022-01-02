@@ -25,15 +25,17 @@ class MediapartParser:
         return last_articles
 
     def __load_article_page(self, url):
-        s = Session()
-        login_data = {
+        data = {
             Login.CONNECTION_USER_NAME: self.mediapart_user,
             Login.CONNECTION_USER_PASSWORD: self.mediapart_pwd,
-            "op": Login.OP_STRING_FRENCH
-            }
-        s.post(Login.LOGIN_PAGE_FRENCH, login_data)
-        page = s.get(url)
-        return page
+            'op': Login.OP_STRING_FRENCH
+        }
+
+        s = Session()
+        s.post(Login.LOGIN_PAGE_FRENCH, data=data)
+        result = s.get(url)
+        s.close()
+        return result
 
     def __write_page_content_in_file(self, final_file_path, page):
         f = open(final_file_path, 'wb')
@@ -108,14 +110,15 @@ class MediapartParser:
         Returns:
             article's unique identifier
         """
-        page = requests.get(
-            article_url,
-            auth=(self.mediapart_user, self.mediapart_pwd))
+        page = self.__load_article_page(article_url)
+
         soup = BeautifulSoup(page.text, "html.parser")
-        result = soup.find("div", {"class": "sub-header "
-                                   "accur8-desktop accur8-tablet "
-                                   "accurWidth-desktop accurWidth-tablet"})
-        return result["data-nid"]
+        for a in soup.find_all('a', href=True):
+            if "/offrir_article/" in a['href']:
+                article_id = a['href'].removeprefix("/offrir_article/")
+                break;
+
+        return article_id
 
     def download_article(self, article_id, file_path):
         """Resolves the article's PDF url and download it on the disk.
