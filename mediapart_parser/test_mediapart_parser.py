@@ -3,7 +3,7 @@ import shutil
 import tempfile
 import unittest
 import PyPDF2
-from mediapart_parser import MediapartParser
+from .mediapart_parser import MediapartParser
 
 mediapart_user_name = os.environ['MEDIAPART_USER_NAME']
 mediapart_user_password = os.environ['MEDIAPART_USER_PASSWORD']

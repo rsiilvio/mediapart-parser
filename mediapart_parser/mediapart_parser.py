@@ -5,7 +5,7 @@ import os
 from bs4 import BeautifulSoup
 from requests import Session
 from deprecated import deprecated
-from mediapart_constants import Global, Login
+from .mediapart_constants import Global, Login
 
 
 class MediapartParser:
