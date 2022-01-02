@@ -21,12 +21,10 @@ setup(
     download_url='https://github.com/r0perice/\
     mediapart-parser/archive/1.0.5.tar.gz',
     install_requires=[
-          'setuptools'
           'feedparser',
           'beautifulsoup4',
           'requests',
           'Deprecated',
-          'PyPDF2'
       ],
 
 )
