@@ -9,7 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
     name='mediapart_parser',
     packages=['mediapart_parser'],
-    version='1.0.4',
+    version='1.0.5',
     license='MIT',
     description='Provide tools to parse and download\
                  Mediapart articles as PDF.',
@@ -19,12 +19,14 @@ setup(
     author_email='robin.perice@protonmail.com',
     url='https://github.com/r0perice/mediapart-parser',
     download_url='https://github.com/r0perice/\
-    mediapart-parser/archive/1.0.4.tar.gz',
+    mediapart-parser/archive/1.0.5.tar.gz',
     install_requires=[
+          'setuptools'
           'feedparser',
           'beautifulsoup4',
           'requests',
           'Deprecated',
+          'PyPDF2'
       ],
 
 )
