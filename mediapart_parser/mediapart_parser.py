@@ -2,11 +2,10 @@ import feedparser
 import requests
 import time
 import os
-from .mediapart_constants import Global
-from .mediapart_constants import Login
 from bs4 import BeautifulSoup
 from requests import Session
 from deprecated import deprecated
+from mediapart_constants import Global, Login
 
 
 class MediapartParser:
