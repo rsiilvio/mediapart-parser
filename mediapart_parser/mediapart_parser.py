@@ -116,8 +116,6 @@ class MediapartParser:
             if "/offrir_article/" in a['href']:
                 article_id = a['href'].removeprefix("/offrir_article/")
                 break
-            else:
-                article_id = "NONE"
 
         return article_id
 
