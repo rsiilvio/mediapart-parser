@@ -115,7 +115,9 @@ class MediapartParser:
         for a in soup.find_all('a', href=True):
             if "/offrir_article/" in a['href']:
                 article_id = a['href'].removeprefix("/offrir_article/")
-                break;
+                break
+            else:
+                article_id = "NONE"
 
         return article_id
 
