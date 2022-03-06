@@ -3,8 +3,6 @@ name: Unit tests
 on:
   push:
     branches: [ develop ]
-    paths:
-      - "**.py"
   
 jobs:
   build:
@@ -16,12 +14,16 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'
+        python-version: '3.9.10'
           
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip setuptools wheel
-        pip install PyPDF2 feedparser requests beautifulsoup4 Deprecated
+        pip install PyPDF2==1.26.0 
+        pip install feedparser==6.0.8
+        pip install requests==2.27.1 
+        pip install beautifulsoup4==4.10.0
+        pip install Deprecated==1.2.13
 
     - name: Run Tests
       env:
