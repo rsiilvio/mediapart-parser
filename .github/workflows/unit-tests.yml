@@ -24,6 +24,7 @@ jobs:
         pip install requests==2.27.1 
         pip install beautifulsoup4==4.10.0
         pip install Deprecated==1.2.13
+        pip install pdfkit==1.0.0
 
     - name: Run Tests
       env:
