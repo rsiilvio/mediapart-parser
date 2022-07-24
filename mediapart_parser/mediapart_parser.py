@@ -1,7 +1,10 @@
+import tempfile
+
 import feedparser
 import requests
 import time
 import os
+import pdfkit
 from bs4 import BeautifulSoup
 from requests import Session
 from deprecated import deprecated
@@ -9,7 +12,6 @@ from .mediapart_constants import Global, Login
 
 
 class MediapartParser:
-
     mediapart_user = ""
     mediapart_pwd = ""
 
@@ -119,23 +121,58 @@ class MediapartParser:
 
         return article_id
 
-    def download_article(self, article_id, file_path):
-        """Resolves the article's PDF url and download it on the disk.
-        Parameters:
-            article_id -- the unique identifier of the article
-            (can be retrieved using get_article_id)
-            file_path -- the path on the disk where
-            you want the article to be written
+    # def download_article(self, article_id, file_path):
+    #     """Resolves the article's PDF url and download it on the disk.
+    #     Parameters:
+    #         article_id -- the unique identifier of the article
+    #         (can be retrieved using get_article_id)
+    #         file_path -- the path on the disk where
+    #         you want the article to be written
+    #
+    #     Returns:
+    #         None
+    #     """
+    #
+    #     # resolve article pdf complete url
+    #     url = Global.PDF_ARTICLE_BASE_URL + str(article_id)
+    #
+    #     # load the page
+    #     page = self.__load_article_page(url)
+    #
+    #     # finally write page content in a file
+    #     self.__write_page_content_in_file(file_path, page)
 
+    def download_article(self, article_url, file_path):
+        """Convert article to PDF then download it on the disk.
+        Parameters:
+            article_url -- the url of the article
+            file_path -- output pdf file absolute path
         Returns:
             None
         """
-
-        # resolve article pdf complete url
-        url = Global.PDF_ARTICLE_BASE_URL + str(article_id)
+        tests_tmp_folder = tempfile.gettempdir()
+        article_tmp_name = "tmp_article.html"
 
         # load the page
-        page = self.__load_article_page(url)
+        page = self.__load_article_page(article_url)
 
-        # finally write page content in a file
-        self.__write_page_content_in_file(file_path, page)
+        tmp_file_path = tests_tmp_folder + "/" + article_tmp_name
+        f = open(tmp_file_path, 'wb')
+        f.write(page.content)
+        f.close()
+
+        while not os.path.exists(tmp_file_path):
+            time.sleep(1)
+
+        pdfkit.from_file(tmp_file_path, file_path, verbose=True, options={"enable-local-file-access": True,
+                                                                          'page-size': 'A4', 'margin-top': '0.50in',
+                                                                          'margin-right': '0.50in',
+                                                                          'margin-bottom': '0.50in',
+                                                                          'margin-left': '0.50in', 'encoding': "UTF-8",
+                                                                          'no-outline': None})
+
+        while not os.path.exists(file_path):
+            time.sleep(1)
+
+        if os.path.exists(tmp_file_path):
+            os.remove(tmp_file_path)

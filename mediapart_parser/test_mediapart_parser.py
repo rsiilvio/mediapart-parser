@@ -41,7 +41,7 @@ class MediapartParserTest(unittest.TestCase):
         article_url = parser.get_last_french_articles_links()[0]
         article_id = parser.get_article_id(article_url)
         article_path = tests_tmp_folder+"article_"+article_id+".pdf"
-        parser.download_article(article_id, article_path)
+        parser.download_article(article_url, article_path)
         self.assertTrue(os.path.exists(article_path))
         try:
             pdf = open(article_path, "rb")

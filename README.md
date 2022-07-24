@@ -54,6 +54,6 @@ Result looks like
 
 #### Download article
 ```python
->>> parser.download_article(string: article_id, string: file_path)
+>>> parser.download_article(string: article_url, string: file_path)
 ```
 
